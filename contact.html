@@ -29,10 +29,7 @@
             <div>
                 <p class="eyebrow">CONTACT DETAILS</p>
                 <h2>We’d be glad<br>to hear from <em>you.</em></h2>
-                <p class="muted">Replace the sample details below with the company’s verified contact information before
-                    publishing.</p>
-                <div class="contact-detail"><span>EMAIL</span><a
-                        href="mailto:your-email@example.com">your-email@example.com</a></div>
+                <p class="muted">Use the enquiry form to get in touch. Verified company contact details will be added later.</p>
                 <div class="contact-detail"><span>PHONE</span>
                     <p>+91 XXXXX XXXXX</p>
                 </div>
@@ -40,16 +37,15 @@
                     <p>Add registered office address<br>City, State, India</p>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" method="post">
                 <p class="eyebrow">SEND AN ENQUIRY</p><label>Your name<input name="name" required
                         placeholder="Enter your name"></label><label>Email address<input name="email" type="email"
                         required placeholder="name@example.com"></label><label>Subject<input name="subject"
                         placeholder="How can we help?"></label><label>Message<textarea name="message" rows="5" required
                         placeholder="Write your message..."></textarea></label><button class="button button-primary"
-                    type="submit">Prepare enquiry <span>↗</span></button>
-                <p class="form-note">This form opens your email application. Set the company email address in
-                    js/script.js before publishing.</p>
-                <p class="form-feedback" aria-live="polite"></p>
+                    type="submit">Send enquiry <span>↗</span></button>
+                <p class="form-note">This test form opens your email application with the enquiry ready to send. Please send it from your email application to complete the test. Do not include confidential information.</p>
+                <p class="form-feedback" role="status" aria-live="polite"></p>
             </form>
         </section>
     </main>

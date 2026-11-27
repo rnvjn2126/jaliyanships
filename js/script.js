@@ -25,8 +25,9 @@ document.querySelectorAll('[data-year]').forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
-// Set this to the real company email address before publishing.
-const COMPANY_EMAIL = 'your-email@example.com';
+// Temporary enquiry recipient for testing only; not the company's official email.
+// Public client-side code is visible to visitors. Replace before production.
+const TEST_ENQUIRY_EMAIL = 'lalatina431@gmail.com';
 const contactForm = document.querySelector('#contactForm');
 
 if (contactForm) {
@@ -40,12 +41,7 @@ if (contactForm) {
     const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
     const feedback = document.querySelector('.form-feedback');
 
-    if (COMPANY_EMAIL === 'your-email@example.com') {
-      feedback.textContent = 'Please configure COMPANY_EMAIL in js/script.js with the company email address.';
-      return;
-    }
-
-    window.location.href = `mailto:${COMPANY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    feedback.textContent = 'Your email application should open with the enquiry ready to send.';
+    window.location.href = `mailto:${TEST_ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    feedback.textContent = 'Your email application should open with the test enquiry ready to send. Please send it there; delivery is not confirmed by this website.';
   });
 }
