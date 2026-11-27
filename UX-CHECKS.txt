@@ -1,0 +1,12 @@
+Baseline: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+7 — moderate prerender allowlist: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+9 — cross-document transitions and reduced motion: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+11 — interruptible CSS transitions, instant menu input: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+13 — 48px targets and keyboard focus: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+14 — safe-area spacing: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+16 — tabular figures: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+17 — balanced headings and paragraphs: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+18 — progressive squircle controls: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, JavaScript syntax
+Browser smoke test: BLOCKED — ERR_BLOCKED_BY_ADMINISTRATOR for both local HTTP and file:// navigation; no interactive assertions ran.
+
+Brand palette: PASS — five pages, internal links, speculation JSON, CSS top-level parse, JS syntax. Live rendering not verified.
