@@ -1,0 +1,12 @@
+{
+  "status": "blocked",
+  "scope": ["local development", "deployed GitHub Pages site"],
+  "reason": "Browser automation did not launch successfully in the available environment.",
+  "staticFindings": {
+    "runtimeExternalResources": ["https://formsubmit.co/ajax/lalatina431@gmail.com on enquiry submission only"],
+    "firstPartyStorageImplementation": "none found",
+    "serviceWorkerImplementation": "none found",
+    "analyticsImplementation": "none found"
+  },
+  "cookieValues": "not collected"
+}

@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "test:static": "node tests/static-audit.mjs",
+    "test": "npm run test:static && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "axe-core": "^4.11.0"
+  }
+}

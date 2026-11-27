@@ -28,11 +28,12 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html about.html management.html certifications.html gallery.html contact.html .nojekyll _site/
+          cp index.html about.html management.html certifications.html gallery.html contact.html privacy.html terms.html robots.txt sitemap.xml .nojekyll _site/
           cp -R css js assets _site/
           test -s _site/assets/jaliyan-video.mp4
           test -s _site/assets/company-logo.png
           node --check _site/js/script.js
+          node --check _site/js/contact-enquiry.js
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v4
         with:

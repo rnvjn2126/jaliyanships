@@ -3,11 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://formsubmit.co; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), autoplay=(), camera=(), geolocation=(), microphone=(), payment=(), usb=()">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#103f43">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Contact Jaliyan Ships for a business enquiry.">
+    <meta name="robots" content="index,follow">
     <title>Contact | Jaliyan Ships</title>
-    <link rel="stylesheet" href="css/style.css?v=20261127-enquiry4">
+    <link rel="stylesheet" href="css/style.css">
   <script type="speculationrules">{"prerender": [{"source": "list", "urls": ["management.html", "index.html", "about.html", "certifications.html"], "eagerness": "moderate"}]}</script>
 </head>
 
@@ -61,12 +65,12 @@
     </main>
     <footer class="footer">
         <div class="container footer-inner"><a class="brand footer-brand" href="index.html"><img src="assets/company-logo.png" alt="Jaliyan Sustainable Ship Recycling Pvt. Ltd." width="126"></a>
-            <p>Responsible ship recycling and material recovery.</p><span>© <span data-year></span> Jaliyan Ships. All
+            <p>Responsible ship recycling and material recovery.</p><div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div><span>© <span data-year></span> Jaliyan Ships. All
                 rights reserved.</span>
         </div>
     </footer>
-    <script src="js/script.js?v=20261127-enquiry5"></script>
-    <script src="js/contact-enquiry-v5.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/contact-enquiry.js"></script>
 </body>
 
 </html>
