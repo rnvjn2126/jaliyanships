@@ -1,44 +1,46 @@
 // Jaliyan Ships site interactions
-// Test recipient only, not the official company address. Public client code is inspectable.
-const TEST_ENQUIRY_EMAIL = 'lalatina431@gmail.com';
+// Enquiries use a portable HTTPS form endpoint in contact.html.
+// Replace the temporary recipient with the anonymous FormSubmit endpoint after activation.
 const contactForm = document.querySelector('#contactForm');
-
 if (contactForm) {
+  const submitButton = contactForm.querySelector('#enquirySubmit');
   const feedback = contactForm.querySelector('.form-feedback');
-  const gmailCompose = document.querySelector('#gmailCompose');
+  const originalLabel = submitButton.textContent;
+  let submitting = false;
 
-  function prepareEnquiry() {
-    const data = new FormData(contactForm);
-    const name = String(data.get('name') || '').trim();
-    const email = String(data.get('email') || '').trim();
-    const subject = String(data.get('subject') || '').trim() || 'Website enquiry';
-    const message = String(data.get('message') || '').trim();
-    if (!name || !email || !message) {
-      feedback.textContent = 'Please enter your name, email address and message.';
-      return null;
-    }
-    return { subject, body: `Name: ${name}\nEmail: ${email}\n\n${message}` };
+  function resetEnquiryState() {
+    submitting = false;
+    submitButton.disabled = false;
+    submitButton.textContent = originalLabel;
+    contactForm.removeAttribute('aria-busy');
+    feedback.textContent = '';
   }
 
   contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const enquiry = prepareEnquiry();
-    if (!enquiry) return;
-    feedback.textContent = 'Your email draft is ready to open. Send it from your email application, or choose Open in Gmail below. Delivery is not confirmed yet.';
-    window.location.href = `mailto:${TEST_ENQUIRY_EMAIL}?subject=${encodeURIComponent(enquiry.subject)}&body=${encodeURIComponent(enquiry.body)}`;
+    if (submitting) {
+      event.preventDefault();
+      return;
+    }
+    // Browser validation runs before submit; reject whitespace-only required fields.
+    for (const field of ['name', 'message']) {
+      const input = contactForm.elements.namedItem(field);
+      if (!input.value.trim()) {
+        event.preventDefault();
+        feedback.textContent = 'Please enter your name and enquiry message.';
+        input.focus();
+        return;
+      }
+    }
+    submitting = true;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending enquiry…';
+    contactForm.setAttribute('aria-busy', 'true');
+    feedback.textContent = 'Opening secure submission. Complete the spam check if requested.';
+    // Let the browser POST to FormSubmit. Never submit to the static Pages host.
   });
 
-  if (gmailCompose) {
-    gmailCompose.hidden = false;
-    gmailCompose.addEventListener('click', () => {
-      if (!contactForm.reportValidity()) return;
-      const enquiry = prepareEnquiry();
-      if (!enquiry) return;
-      const query = new URLSearchParams({ view: 'cm', fs: '1', to: TEST_ENQUIRY_EMAIL, su: enquiry.subject, body: enquiry.body });
-      feedback.textContent = 'A Gmail draft will open. Sign in if prompted and press Send to complete the test.';
-      window.location.href = 'https://mail.google.com/mail/?' + query.toString();
-    });
-  }
+  // Returning from the service via browser Back must enable the form again.
+  window.addEventListener('pageshow', resetEnquiryState);
 }
 
 const menuButton = document.querySelector('.menu-toggle');

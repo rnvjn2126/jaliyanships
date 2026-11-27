@@ -877,3 +877,7 @@ p { text-wrap: pretty; }
 .video-card .button { flex-shrink: 0; }
 .video-card video:focus-visible { outline: 3px solid #17666b; outline-offset: -4px; }
 @media (max-width: 520px) { .gallery-intro { min-height: 245px; } .gallery-intro .page-hero-content { padding: 40px 0; } .gallery-section { padding-block: 40px; } .video-card figcaption { padding: 18px; } .video-card .button { width: 100%; } }
+
+/* Enquiry submission feedback */
+.contact-form button:disabled { opacity: .65; cursor: wait; transform: none; }
+.contact-form .form-feedback:not(:empty) { margin-top: 12px; color: var(--ocean); font-size: 13px; }
