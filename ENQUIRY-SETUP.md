@@ -1,14 +1,13 @@
 # Enquiry form setup
 
-The contact page uses FormSubmit's HTTPS POST endpoint. It works on GitHub Pages and compatible static GoDaddy hosting without an email application or server-side credentials.
+The contact page submits to FormSubmit's cross-origin HTTPS AJAX endpoint, without navigating away or launching an email client. Compatible with GitHub Pages and static GoDaddy hosting. JavaScript is required; the submit button starts disabled until the handler is installed.
 
-1. Open the hosted contact page and submit a non-confidential test enquiry.
-2. Complete FormSubmit's spam check if shown.
-3. In the temporary test recipient inbox, confirm the FormSubmit activation email. Check spam if needed.
-4. Submit another test and verify actual delivery. FormSubmit's confirmation screen is not proof of inbox delivery.
-5. Replace the recipient address in contact.html with the anonymous endpoint identifier supplied in the activation email. Do not commit activation links or API keys.
-6. Before launch, replace the test recipient with the approved company recipient, activate that endpoint, and retest from the production domain.
+1. Submit a non-confidential test enquiry from the hosted website.
+2. Confirm the activation email in the temporary recipient inbox (check spam).
+3. Submit again and verify receipt. The page only confirms provider acceptance, not inbox delivery.
+4. Replace the temporary email in the AJAX action with the anonymous identifier supplied by FormSubmit. Do not commit activation links or API keys.
+5. Before production, use the approved company address, activate it, and retest on the production domain.
 
-The form intentionally uses native POST rather than AJAX to preserve the provider's CAPTCHA flow and work without JavaScript. The provider handles confirmation and errors; browser Back permits retry. JavaScript prevents duplicate clicks during navigation but does not guarantee server-side idempotency. The temporary email is not displayed as a company contact, but it remains visible in public HTML source and commit history until replaced (old history remains accessible). The provider processes form data externally; review its privacy terms before using real customer data.
+The interactive reCAPTCHA is disabled to avoid the provider's challenge page. The honeypot remains enabled and FormSubmit applies its own abuse controls; these are weaker than interactive CAPTCHA. Consider an inline CAPTCHA-compatible backend or form provider for production. No automatic retries are made; a failed or timed-out response may still have reached the provider. The form preserves input on failure and activation responses. The recipient is not displayed as a company contact but is inspectable in public source/history. Review FormSubmit privacy terms before collecting real customer data.
 
-Documentation: https://formsubmit.co/documentation
+Documentation: https://formsubmit.co/ajax-documentation

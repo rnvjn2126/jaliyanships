@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#103f43">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Contact | Jaliyan Ships</title>
-    <link rel="stylesheet" href="css/style.css?v=20261127-enquiry3">
+    <link rel="stylesheet" href="css/style.css?v=20261127-enquiry4">
   <script type="speculationrules">{"prerender": [{"source": "list", "urls": ["management.html", "index.html", "about.html", "certifications.html"], "eagerness": "moderate"}]}</script>
 </head>
 
@@ -37,10 +37,11 @@
                     <p>Add registered office address<br>City, State, India</p>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm" action="https://formsubmit.co/lalatina431@gmail.com" method="post">
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/lalatina431@gmail.com" method="post">
                 <p class="eyebrow">SEND AN ENQUIRY</p>
                 <input type="hidden" name="_subject" value="Jaliyan Ships — Website enquiry">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
                 <div hidden><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"></div>
                 <label>Your name<input name="name" required autocomplete="name" maxlength="120"
                         placeholder="Enter your name"></label>
@@ -50,9 +51,10 @@
                         placeholder="How can we help?"></label>
                 <label>Message<textarea name="message" rows="5" required maxlength="5000"
                         placeholder="Write your message..."></textarea></label>
-                <button class="button button-primary" type="submit" id="enquirySubmit">Send enquiry <span>↗</span></button>
+                <button class="button button-primary" type="submit" id="enquirySubmit" disabled>Send enquiry <span>↗</span></button>
                 <p class="form-feedback" role="status" aria-live="polite"></p>
-                <p class="form-note">This is a test enquiry form. Submissions are processed by FormSubmit and may require a spam-protection check. Do not include confidential information.</p>
+                <p class="form-note">This is a test enquiry form. Submissions are processed by FormSubmit. Do not include confidential information.</p>
+                            <noscript><p class="form-note">Please enable JavaScript to send your enquiry without leaving this page.</p></noscript>
             </form>
         </section>
     </main>
@@ -62,7 +64,7 @@
                 rights reserved.</span>
         </div>
     </footer>
-    <script src="js/script.js?v=20261127-enquiry3"></script>
+    <script src="js/script.js?v=20261127-enquiry4"></script>
 </body>
 
 </html>

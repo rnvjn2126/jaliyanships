@@ -881,3 +881,6 @@ p { text-wrap: pretty; }
 /* Enquiry submission feedback */
 .contact-form button:disabled { opacity: .65; cursor: wait; transform: none; }
 .contact-form .form-feedback:not(:empty) { margin-top: 12px; color: var(--ocean); font-size: 13px; }
+
+.contact-form .form-feedback[data-state="success"] { color: #17604d; background: #e0f2e9; padding: 12px; border-radius: 6px; }
+.contact-form .form-feedback[data-state="error"] { color: #8b2831; background: #fff0f0; padding: 12px; border-radius: 6px; }

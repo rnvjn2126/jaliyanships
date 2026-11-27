@@ -1,6 +1,5 @@
 // Jaliyan Ships site interactions
-// Enquiries use a portable HTTPS form endpoint in contact.html.
-// Replace the temporary recipient with the anonymous FormSubmit endpoint after activation.
+// FormSubmit AJAX endpoint is configured in contact.html.
 const contactForm = document.querySelector('#contactForm');
 if (contactForm) {
   const submitButton = contactForm.querySelector('#enquirySubmit');
@@ -8,39 +7,60 @@ if (contactForm) {
   const originalLabel = submitButton.textContent;
   let submitting = false;
 
-  function resetEnquiryState() {
-    submitting = false;
-    submitButton.disabled = false;
-    submitButton.textContent = originalLabel;
-    contactForm.removeAttribute('aria-busy');
-    feedback.textContent = '';
+  function showEnquiryStatus(state, message) {
+    feedback.dataset.state = state;
+    feedback.textContent = message;
   }
 
-  contactForm.addEventListener('submit', (event) => {
-    if (submitting) {
-      event.preventDefault();
-      return;
-    }
-    // Browser validation runs before submit; reject whitespace-only required fields.
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (submitting) return;
     for (const field of ['name', 'message']) {
       const input = contactForm.elements.namedItem(field);
       if (!input.value.trim()) {
-        event.preventDefault();
-        feedback.textContent = 'Please enter your name and enquiry message.';
+        showEnquiryStatus('error', 'Please enter your name and enquiry message.');
         input.focus();
         return;
       }
     }
+    const data = Object.fromEntries(new FormData(contactForm));
     submitting = true;
     submitButton.disabled = true;
     submitButton.textContent = 'Sending enquiry…';
     contactForm.setAttribute('aria-busy', 'true');
-    feedback.textContent = 'Opening secure submission. Complete the spam check if requested.';
-    // Let the browser POST to FormSubmit. Never submit to the static Pages host.
+    showEnquiryStatus('pending', 'Sending your enquiry. Please keep this page open.');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+        signal: controller.signal,
+        credentials: 'omit'
+      });
+      const result = await response.json();
+      const message = typeof result.message === 'string' ? result.message : '';
+      if (/activat|not confirmed|confirm your (email|form)/i.test(message)) {
+        showEnquiryStatus('pending', 'The test recipient must activate the enquiry form by email before delivery can be verified. Your entries have been kept.');
+      } else if (response.ok && (result.success === true || result.success === 'true')) {
+        contactForm.reset();
+        showEnquiryStatus('success', 'Thank you. Your enquiry was accepted by the submission service.');
+      } else {
+        showEnquiryStatus('error', 'Your enquiry could not be confirmed. Please check your connection or try again later. Your entries have been kept.');
+      }
+    } catch (error) {
+      showEnquiryStatus('error', 'We could not confirm submission. Please check your connection and try again if necessary. Your entries have been kept.');
+    } finally {
+      clearTimeout(timeout);
+      submitting = false;
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
+      contactForm.removeAttribute('aria-busy');
+    }
   });
-
-  // Returning from the service via browser Back must enable the form again.
-  window.addEventListener('pageshow', resetEnquiryState);
+  // Enable only after installing the listener, preventing native navigation if scripts fail.
+  submitButton.disabled = false;
 }
 
 const menuButton = document.querySelector('.menu-toggle');
