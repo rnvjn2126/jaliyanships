@@ -31,4 +31,8 @@ See UX-CHECKS.txt: baseline and each of the eight implementation steps passed st
 
 ## Before publishing
 
-Replace the placeholder company email, phone and address; approved management names/photos; and certification titles/details. The form currently deliberately refuses to open an enquiry with the placeholder email. Check all five pages on mobile and desktop and verify external images. Upload the contents of the jaliyan-ships folder to your hosting document root, not the enclosing folder. The website has not been uploaded to GitHub or GoDaddy.
+Replace the placeholder company email, phone and address; approved management names/photos; and certification titles/details. The form currently deliberately refuses to open an enquiry with the placeholder email. Check all five pages on mobile and desktop and verify external images. Upload the contents of the jaliyan-ships folder to your hosting document root, not the enclosing folder. The earlier draft was uploaded to GitHub; the revised Gallery and teal branding are supplied in this ZIP only.
+
+## Gallery and branding update
+
+The site now contains six pages. Gallery is in the shared navigation, uses a local H.264 MP4 and a poster frame, and supports native controls and download. The logo and corrected teal palette are present throughout. Static validation passed for all six pages, including local assets and active navigation; video decode passed. Live Chromium navigation is still blocked.

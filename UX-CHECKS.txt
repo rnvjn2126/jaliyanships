@@ -10,3 +10,5 @@ Baseline: PASS: 5 pages, local links, speculation JSON, CSS top-level parse, Jav
 Browser smoke test: BLOCKED — ERR_BLOCKED_BY_ADMINISTRATOR for both local HTTP and file:// navigation; no interactive assertions ran.
 
 Brand palette: PASS — five pages, internal links, speculation JSON, CSS top-level parse, JS syntax. Live rendering not verified.
+
+Gallery + teal branding update: PASS — six pages, six navigation links per page, active-page attributes, local links/assets, CSS top-level parse, speculation JSON and JS syntax. Video H.264 1024x576, 37.245s, no audio; FFmpeg full decode PASS. Chromium navigation BLOCKED: ERR_BLOCKED_BY_ADMINISTRATOR. No live playback or visual assertion ran.
