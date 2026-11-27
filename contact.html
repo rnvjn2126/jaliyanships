@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="form-action 'none'">
     <meta name="theme-color" content="#103f43">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Contact | Jaliyan Ships</title>
@@ -37,7 +38,7 @@
                     <p>Add registered office address<br>City, State, India</p>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/lalatina431@gmail.com" method="post">
+            <form class="contact-form" id="enquiryForm" data-endpoint="https://formsubmit.co/ajax/lalatina431@gmail.com" method="post">
                 <p class="eyebrow">SEND AN ENQUIRY</p>
                 <input type="hidden" name="_subject" value="Jaliyan Ships — Website enquiry">
                 <input type="hidden" name="_template" value="table">
@@ -51,10 +52,11 @@
                         placeholder="How can we help?"></label>
                 <label>Message<textarea name="message" rows="5" required maxlength="5000"
                         placeholder="Write your message..."></textarea></label>
-                <button class="button button-primary" type="submit" id="enquirySubmit" disabled>Send enquiry <span>↗</span></button>
+                <button class="button button-primary" type="button" id="enquirySubmit" disabled>Send enquiry <span>↗</span></button>
                 <p class="form-feedback" role="status" aria-live="polite"></p>
-                <p class="form-note">This is a test enquiry form. Submissions are processed by FormSubmit. Do not include confidential information.</p>
-                            <noscript><p class="form-note">Please enable JavaScript to send your enquiry without leaving this page.</p></noscript>
+                <p class="form-note">This is a test enquiry form. Submissions are processed by FormSubmit without leaving this page. Do not include confidential information.</p>
+                            <p class="form-note">Enquiry form version 5</p>
+                <noscript><p class="form-note">Please enable JavaScript to send your enquiry without leaving this page.</p></noscript>
             </form>
         </section>
     </main>
@@ -64,7 +66,8 @@
                 rights reserved.</span>
         </div>
     </footer>
-    <script src="js/script.js?v=20261127-enquiry4"></script>
+    <script src="js/script.js?v=20261127-enquiry5"></script>
+    <script src="js/contact-enquiry-v5.js"></script>
 </body>
 
 </html>
